@@ -1,0 +1,252 @@
+:root {
+    /* Cores temáticas por região */
+    --cor-norte: #2d5f4c;
+    --cor-nordeste: #d4a418;
+    --cor-centro: #8c6239;
+    --cor-sudeste: #5f2d2d;
+    --cor-sul: #2d5f5f;
+    
+    /* Cores funcionais */
+    --cor-texto: #333;
+    --cor-fundo: #f8f8f8;
+    --cor-destaque: #2c5f2d;
+    --cor-borda: rgba(0,0,0,0.1);
+    
+    /* Espaçamentos */
+    --espacamento-base: 1rem;
+    --espacamento-grande: 1.5rem;
+    --altura-header: 100px;
+    
+    /* Bordas */
+    --borda-radius: 8px;
+    --borda-espessura: 4px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Georgia', serif;
+}
+
+body {
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--altura-header);
+}
+
+/* Header dinâmico por região */
+header {
+    background: #2c5f2d; /* Fallback para Norte */
+    padding: var(--espacamento-base) 3rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--altura-header);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+}
+
+.logo a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.8rem;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    text-decoration: underline;
+    outline: none;
+}
+
+.active {
+    border-radius: 4px;
+    padding: 3px;
+    background: rgba(13, 11, 11, 0.25);
+}
+
+/* Layout principal responsivo */
+main {
+    width: 90%;
+    max-width: 1200px;
+    margin: var(--espacamento-grande) auto;
+    padding: 0 var(--espacamento-base);
+    flex: 1;
+}
+
+/* Links de receitas */
+.recipe-link {
+    color: var(--cor-destaque);
+    text-decoration: none;
+    border-bottom: 1px dotted;
+    transition: all 0.3s ease;
+}
+
+.recipe-link:hover,
+.recipe-link:focus {
+    color: #1e401f;
+    border-bottom-style: solid;
+    outline: none;
+}
+
+/* Rodapé */
+footer {
+    background:#2c5f2d;
+    color: #fff;
+    text-align: center;
+    padding: var(--espacamento-grande);
+    margin-top: auto;
+}
+
+/* Elementos comuns */
+.banner {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: var(--borda-radius);
+    margin: var(--espacamento-base) 0;
+}
+
+.fontes ul {
+    list-style: none;
+    padding: var(--espacamento-base);
+    background: #f0f0f0;
+    border-radius: var(--borda-radius);
+}
+
+/* Estilos para seções de conteúdo */
+.regional-section,.ingredientes-section,
+.conflito-item, .historia-section, .moderna-section, .culturas {
+    background: #fff;
+    padding: var(--espacamento-grande);
+    margin: var(--espacamento-grande) 0;
+    border-radius: var(--borda-radius);
+    box-shadow: 0 2px 4px var(--cor-borda);
+}
+
+.conflito-item h2 {
+    color: var(--cor-sudeste);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* Caixas de destaque */
+.caixa-dados,
+.caixa-alerta,
+.destaque-positivo {
+    padding: var(--espacamento-base);
+    margin: var(--espacamento-base) 0;
+    border-left: var(--borda-espessura) solid;
+}
+
+.caixa-dados {
+    background: #f8f9fa;
+    border-left-color: var(--cor-centro);
+}
+
+.caixa-alerta {
+    background: #fff3cd;
+    border-left-color: var(--cor-nordeste);
+}
+
+.destaque-positivo {
+    background: #d4edda;
+    border-left-color: var(--cor-norte);
+}
+
+blockquote {
+    font-style: italic;
+    color: #666;
+    border-left: 3px solid var(--cor-sul);
+    padding-left: 15px;
+    margin: var(--espacamento-base) 0;
+}
+
+/* Página Sobre */
+body.sobre {
+    background-color: #d1cece;
+}
+
+.about {
+    padding: var(--espacamento-base);
+    background: #fdf4f4;
+    border-radius: var(--borda-radius);
+}
+
+/* Grid de regiões */
+.regioes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--espacamento-grande);
+    list-style: none;
+    padding: var(--espacamento-grande) 0;
+    position: relative;
+    font-size: larger;
+}
+
+.regioes-grid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('images/mapa-brasil-simplificado.png') no-repeat center;
+    background-size: cover;
+    opacity: 0.3;
+    z-index: -1;
+    border-radius: var(--borda-radius);
+}
+
+.regiao-link {
+    display: block;
+    padding: var(--espacamento-grande);
+    background: #fff;
+    border-radius: var(--borda-radius);
+    text-align: center;
+    color: var(--cor-destaque);
+    text-decoration: none;
+    box-shadow: 0 2px 4px var(--cor-borda);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.regiao-link:hover,
+.regiao-link:focus {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    outline: none;
+}
+
+/* Bordas coloridas por região */
+.regiao-link[href*="norte"] { border-left: var(--borda-espessura) solid var(--cor-norte); }
+.regiao-link[href*="nordeste"] { border-left: var(--borda-espessura) solid var(--cor-nordeste); }
+.regiao-link[href*="centro-oeste"] { border-left: var(--borda-espessura) solid var(--cor-centro); }
+.regiao-link[href*="sudeste"] { border-left: var(--borda-espessura) solid var(--cor-sudeste); }
+.regiao-link[href*="sul"] { border-left: var(--borda-espessura) solid var(--cor-sul); }
+
+/* Linhas divisórias regionais */
+.linha-main {border-top: var(--borda-espessura) solid;margin: var(--espacamento-grande) 0; border-top-color:#2c5f2d; }
+.linha-norte {border-top: var(--borda-espessura) solid;margin: var(--espacamento-grande) 0; border-top-color: var(--cor-norte); }
+.linha-nordeste {border-top: var(--borda-espessura) solid;margin: var(--espacamento-grande) 0; border-top-color: var(--cor-nordeste); }
+.linha-centro {border-top: var(--borda-espessura) solid;margin: var(--espacamento-grande) 0; border-top-color: var(--cor-centro); }
+.linha-sudeste {border-top: var(--borda-espessura) solid;margin: var(--espacamento-grande) 0; border-top-color: var(--cor-sudeste); }
+.linha-sul {border-top: var(--borda-espessura) solid;margin: var(--espacamento-grande) 0; border-top-color: var(--cor-sul); }
